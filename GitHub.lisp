@@ -44,9 +44,8 @@
   (collect(sortpoly(append a b))))
 
 (defun my-remove(a)
-  (cond
-   ((null a) a)
-   ((list(car a) (my-remove(cdr a))))))
-
-
-(print(p+ '((5((x 2)))) '((5((x 2))))))
+  (if(null a)
+     a
+     (if(equal (car(car a)) 0)
+        t
+        nil)))
