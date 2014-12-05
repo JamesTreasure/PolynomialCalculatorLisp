@@ -46,7 +46,8 @@
 (defun my-remove(a)
   (cond
    ((null a) a)
-   ((list(car a) (my-remove(cdr a))))))
+   ((append (car a) (my-remove(cdr a))))))
 
 
+(print(my-remove '(1 2 3 4 5 6)))
 (print(p+ '((5((x 2)))) '((5((x 2))))))
