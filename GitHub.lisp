@@ -11,16 +11,13 @@
                   (t2(car(cdr m2))))
 
                 (if (equal t1 t2)                                              ; if t1 == t2
-                    (collect (append (list (list (+ c1 c2) t1)) rem))   ; then return collect((c1 + c2, t1) + rem)
+                    (collect (append (list (list (+ c1 c2) t1)) rem))          ; then return collect((c1 + c2, t1) + rem)
                     (append (list m1) (collect (append (list m2) rem))))))))   ; else return (c1, t1) + collect((c2, t2) + rem)
-
 
 (defun atom-less (a b)
  (if (realp a)
   (< a b)
-  (string-lessp a b)
- )
-)
+  (string-lessp a b)))
 
 (defun llt (a b)
  (cond
@@ -29,10 +26,7 @@
   ((cond
    ((llt (car a) (car b)) t)
    ((equal (car a) (car b)) (llt (cdr a) (cdr b)))
-   (nil)
-  ))
- )
-)
+   (nil)))))
 
 (defun compare(a b)
   (llt (car (cdr a)) (car (cdr b))))
@@ -49,10 +43,7 @@
     a
     (if (= (car(car a)) 0)
       (my-remove (cdr a))
-      (append (list (car a)) (my-remove (cdr a)))
-    )
-  )
-)
+      (append (list (car a)) (my-remove (cdr a))))))
 
 
 (print(p+ '((8.0((x 2)))) '((3((x 2)))))) 
