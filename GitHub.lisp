@@ -11,8 +11,9 @@
                   (t2(car(cdr m2))))
 
                 (if (equal t1 t2)                                              ; if t1 == t2
-                    (collect (append (list (list (+ c1 c2) t1)) rem))          ; then return collect((c1 + c2, t1) + rem)
+                    (collect (append (list (list (+ c1 c2) t1)) rem))   ; then return collect((c1 + c2, t1) + rem)
                     (append (list m1) (collect (append (list m2) rem))))))))   ; else return (c1, t1) + collect((c2, t2) + rem)
+
 
 (defun atom-less (a b)
  (if (realp a)
@@ -41,11 +42,17 @@
   (sort a #'compare))
 
 (defun p+(a b)
-  (collect(sortpoly(append a b))))
+  (my-remove(collect(sortpoly(append a b)))))
 
 (defun my-remove(a)
-  (if(null a)
-     a
-     (if(equal (car(car a)) 0)
-        t
-        nil)))
+  (if (null a)
+    a
+    (if (= (car(car a)) 0)
+      (my-remove (cdr a))
+      (append (list (car a)) (my-remove (cdr a)))
+    )
+  )
+)
+
+
+(print(p+ '((8.0((x 2)))) '((3((x 2)))))) 
