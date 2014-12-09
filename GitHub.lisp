@@ -48,6 +48,9 @@
   (map 'list (lambda (x) (list (- (car x)) (car (cdr x)))) a))
 
 (defun p-(a b)
-  (p+ (negate b)))
+  (p+ a (negate b)))
 
-(print(p- '((13((2 x)))) '((10((2 x))))))
+(print(p-(p+ '((5((2 x)))) '((10((2 x))))) '((3((2 x))))))
+
+
+;p- (p+ p1 p2) p2)
