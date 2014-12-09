@@ -44,17 +44,10 @@
       (my-remove (cdr a))
       (append (list (car a)) (my-remove (cdr a))))))
 
-
-;(defun negate-helper(a)
-
-
 (defun negate(a)
   (map 'list (lambda (x) (list (- (car x)) (car (cdr x)))) a))
 
-(print(p+ '((8.0((x 2)))) '((3((x 2))))))
-(print(car(cdr '((5((2 x)))(3((2 x)))))))
+(defun p-(a b)
+  (p+ (negate b)))
 
-
-(print(map 'list #'car'((1((2 x)))(2((2 x))))))
-(print(negate '((5((2 x)))(10((2 y))))))
-;(print(map 'list (lambda (x) (list (- (car x)) (car (cdr x)))) '((5((2 x)))(3((2 x))))))
+(print(p- '((13((2 x)))) '((10((2 x))))))
