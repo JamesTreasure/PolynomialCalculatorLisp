@@ -2,7 +2,7 @@
     (let ((m1(car l))
           (m2(car(cdr l)))
           (rem(cdr(cdr l))))
-
+    
         (if (null m2)                                                          ; If the list has less than 2 elements
             l                                                                  ; then return the list (nothing to collect)
             (let ((c1(car m1))                                                 ; else, extract (c1, t1), (c2, t2) from m1 and m2
@@ -31,7 +31,6 @@
 (defun compare(a b)
   (llt (car (cdr a)) (car (cdr b))))
 
-
 (defun sortpoly(a)
   (sort a #'compare))
 
@@ -46,4 +45,16 @@
       (append (list (car a)) (my-remove (cdr a))))))
 
 
-(print(p+ '((8.0((x 2)))) '((3((x 2)))))) 
+;(defun negate-helper(a)
+
+
+(defun negate(a)
+  (map 'list (lambda (x) (list (- (car x)) (car (cdr x)))) a))
+
+(print(p+ '((8.0((x 2)))) '((3((x 2))))))
+(print(car(cdr '((5((2 x)))(3((2 x)))))))
+
+
+(print(map 'list #'car'((1((2 x)))(2((2 x))))))
+(print(negate '((5((2 x)))(10((2 y))))))
+;(print(map 'list (lambda (x) (list (- (car x)) (car (cdr x)))) '((5((2 x)))(3((2 x))))))
