@@ -10,7 +10,7 @@
                   (t1(car(cdr m1)))
                   (t2(car(cdr m2))))
 
-                (if (equal t1 t2)                                              ; if t1 == t2
+                (if (equal (sort t1 #'llt) (sort t2 #'llt))                                            ; if t1 == t2
                     (collect (append (list (list (+ c1 c2) t1)) rem))          ; then return collect((c1 + c2, t1) + rem)
                     (append (list m1) (collect (append (list m2) rem))))))))   ; else return (c1, t1) + collect((c2, t2) + rem)
 
@@ -50,7 +50,7 @@
 (defun p-(a b)
   (p+ a (negate b)))
 
-(print(p-(p+ '((5((2 x)))) '((10((2 x))))) '((3((2 x))))))
+(print(p+'((10((5 y)(3 x)(2 z)))) '((10((2 z)(3 x)(5 y))))))
 
 
 ;p- (p+ p1 p2) p2)
