@@ -56,13 +56,18 @@
 (defun p-(a b)
   (p+ a (negate b)))
 
-
 (defun term-multiply(a b)
   (list (* (car a) (car b)) (collect(sortcollect(append (car(cdr a)) (car(cdr b)))))))
 
 (defun term-polynomial (poly term) 
   (map 'list #'(lambda (x) (term-multiply x term)) poly))
 
-(print(term-polynomial '((5((2 x)))(3((2 y)))) '(5((2 x)))))
+(defun p* (a b)
+  (if (null b) 
+    nil
+    (p+ (term-polynomial a (car b)) (p* a (cdr b)))))
 
+(print(p* '((5((2 x)))(3((3 y)))) '((5((2 x)))(2((3 x))))))
+;(print(term-polynomial '((5((2 x)))(3((2 y)))) '(5((2 x)))))
 
+;so take the first term of the first polynomial, multiply it with the other polynomial, recurse on the remainder of the first polynomial and add these two result polynomials together
