@@ -60,9 +60,9 @@
 (defun term-multiply(a b)
   (list (* (car a) (car b)) (collect(sortcollect(append (car(cdr a)) (car(cdr b)))))))
 
+(defun term-polynomial (poly term) 
+  (map 'list #'(lambda (x) (term-multiply x term)) poly))
 
-;(print(p-'((10((5 y)(3 x)(2 z)))) '((10((5 y)(3 x)(2 z))))))
-;(print(car(car(cdr '((5((2 x)))(10((3 y))))))))
+(print(term-polynomial '((5((2 x)))(3((2 y)))) '(5((2 x)))))
 
-(print(term-multiply '(5((1 x))) '(2(()))))
 
