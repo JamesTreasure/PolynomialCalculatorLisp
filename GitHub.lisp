@@ -75,7 +75,6 @@
 (defun term-polynomial (poly term) 
   (map 'list #'(lambda (x) (term-multiply x term)) poly))
 
-
 ;addition function
 (defun p+(a b)
   (my-remove(collect(sortcollect(append a b)))))
@@ -90,5 +89,5 @@
     nil
     (p+ (term-polynomial a (car b)) (p* a (cdr b)))))
 
-(print(p- '((1.5((0 x)(0 y)))) '((3.2((2 X))))))
+(print(p*(p- '((10((1 x)))(4((4 y)))) '((5((3 x)))(4((3 z))))) '((3((2 y))))))
 
