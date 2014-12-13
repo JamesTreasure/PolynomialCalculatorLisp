@@ -89,5 +89,4 @@
     nil
     (p+ (term-polynomial a (car b)) (p* a (cdr b)))))
 
-(print(p*(p- '((10((1 x)))(4((4 y)))) '((5((3 x)))(4((3 z))))) '((3((2 y))))))
 
